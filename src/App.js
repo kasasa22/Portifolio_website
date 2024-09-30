@@ -1,16 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import styled, { ThemeProvider } from "styled-components";
-import { BrowserRouter } from 'react-router-dom'; 
 import { darkTheme } from "./utils/Themes";
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
+import { BrowserRouter } from "react-router-dom";
+import Hero from "./components/sections/Hero";
+
+const Body = styled.div`
+  background-color: ${({ theme }) => theme.bg};
+  width: 100%;
+  height: 98vh;
+  overflow-x: hidden;
+  position: relative;
+`;
 
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
         <Navbar />
+        <Body>
+          <Hero/>
+
+        </Body>
       </BrowserRouter>
     </ThemeProvider>
   );
