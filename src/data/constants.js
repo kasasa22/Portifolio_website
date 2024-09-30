@@ -280,7 +280,7 @@ export const education = [
     school: "Makerere University",
     date: "jan 2021 - Present",
     grade: "....",
-    desc: "I completed my class 12 high school education at Methodist School, Dankuni, where I studied Science with Computer Science.",
+    desc: "I am currently pursuing a Bachelor of Science in Software Engineering at Makerere University, where I am gaining expertise in software development, computer science fundamentals, and problem-solving through various projects and coursework.",
     degree: "Bachelor of Science in Software Engineering",
   },
  
