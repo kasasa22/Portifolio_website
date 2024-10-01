@@ -22,9 +22,9 @@ export const Bio = {
   resume:
     "https://drive.google.com/file/d/1_A3tVUpR9dXJHjOfc-eXlAKRHjqDE5cX/view?usp=drive_link",
   linkedin: "https://www.linkedin.com/in/kasasa-livingstone-913a76254/",
-  twitter: "https://twitter.com/RishavChanda",
-  insta: "https://www.instagram.com/rishav_chanda/",
-  facebook: "https://www.facebook.com/rishav.chanda.165/",
+  twitter: "https://twitter.com/KasasaLivingstone",
+  insta: "https://www.instagram.com/kasasatrevor/",
+  facebook: "https://www.facebook.com/trevor/",
 };
 
 export const skills = [
@@ -302,7 +302,7 @@ export const projects = [
     title: "Car Management System",
     date: "Jan 2024 - Mar 2024",
     description:
-      "A comprehensive system for managing client-owned vehicles. Tracks sales, expenses, profits, and installment payments. Includes detailed vehicle records such as chassis number and purchase date.",
+      "Created a car sales management system using PHP with the Laravel framework. The system records vehicle details, tracks payments (both full and installment), and monitors transactions by individual users. It helps manage sales, installment plans, and customer interactions for car dealerships.",
     image: car,
     tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "jQuery"],
     category: "web app",
@@ -314,7 +314,7 @@ export const projects = [
     title: "Rental Management system",
     date: "May 2024 - jun 2024",
     description:
-      "Developed a report generation dashboard that tracks company expenses. Features include real-time updates, user-friendly navigation, and secure storage.",
+      "Developed a property rental management system using PHP, JavaScript, and AJAX. The system tracks tenant details, payment dates, and outstanding balances. It generates monthly reports on payments and identifies defaulters, assisting property owners in managing their rental properties efficiently.",
     image: rental,
     tags: ["PHP", "Laravel", "MySQL", "Chart.js"],
     category: "web app",
@@ -326,7 +326,7 @@ export const projects = [
     title: "Tours and Travel Website",
     date: "June 2024",
     description:
-      "Backend development for a dental clinic system. Managed patient records, appointments, and automated billing with integrated payment gateways.",
+      "Developed a website for a travel company using HTML, CSS, and JavaScript. The website advertises services, facilitates bookings, and supports communication between clients and company owners. The booking and support features were implemented using PHP to handle customer inquiries and reservations.",
     image: travel,
     tags: ["Node.js", "Express", "MongoDB", "Docker", "CI/CD"],
     category: "backend system",
@@ -350,7 +350,7 @@ export const projects = [
     title: "Phamacy Management System",
     date: "Apr 2023 - Jun 2023",
     description:
-      "A wireless network monitoring system for an organization. Uses UniFi tools and WiFi Man for real-time diagnostics and performance metrics.",
+      "Designed and implemented a comprehensive pharmacy management system using PHP and MySQL. The system facilitates the management of medicine categories, cashier details, medicine inventory, and sales data. It includes features for adding, editing, and viewing all relevant information in the pharmacy, and provides a secure, responsive interface for administrators and cashiers to track sales and make informed decisions. The system is reliable and available 24/7.",
     image: "/assets/images/wireless-monitoring-system.jpg",
     tags: ["UniFi", "WiFi Man", "Python", "Grafana"],
     category: "network tools",
@@ -362,7 +362,7 @@ export const projects = [
     title: "Weather App",
     date: "Mar 2024 - Apr 2024",
     description:
-      "A simple and intuitive weather application powered by Rapid Api to Stay updated with accurate weather forecasts wherever you are!",
+      "Built a simple and intuitive weather application using ReactJS, powered by Rapid API. The app provides users with accurate real-time weather forecasts, keeping them informed of weather conditions wherever they are.",
     image: app,
     tags: ["Node.js", "Express", "MySQL", "REST API"],
     category: "API development",
