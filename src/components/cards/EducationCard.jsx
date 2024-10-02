@@ -44,7 +44,7 @@ const Date = styled.div`
   color: ${({ theme }) => theme.text_secondary + 80};
 
   @media only screen and (max-width: 768px) {
-    font-size: 10px;
+    font-size: 11px;
   }
 `;
 
