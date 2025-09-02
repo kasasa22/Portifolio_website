@@ -7,24 +7,28 @@ import travel from '../images/travel.jpeg'
 import app from '../images/app.png'
 import pham from '../images/pham.jpeg'
 import port from '../images/port.png'
+import aibos from '../images/kasasa.jpeg'
+import airqo from '../images/muk.png'
 
 export const Bio = {
   name: "Kasasa Livingstone Trevor",
   roles: [
+    "Software Engineer",
     "Full Stack Developer",
-    "Android Developer",
-    "Free Lancer",
-    "Programmer",
+    "AI Systems Developer",
+    "Mobile App Developer",
   ],
   description:
-    "I am a passionate full-stack developer with a strong foundation in building modern, scalable web applications. I have experience working with technologies like ReactJS, Node.js, Express, and MongoDB in the MERN stack, as well as Laravel for PHP-based projects. My portfolio showcases a range of projects, from rental management systems to real-time weather apps and travel websites. With a focus on delivering clean, efficient code, I am constantly learning and adapting to new challenges, striving to create impactful digital solutions.",
+    "I am a Software Engineer with expertise in building scalable web applications, AI-powered systems, and mobile solutions. Currently working at AIBOS-UG on AI agents and fact-checking platforms while volunteering at AirQo to develop device monitoring systems. My experience spans full-stack development with React, Next.js, Node.js, Laravel, and Python, along with data engineering using Apache Airflow and PostgreSQL. I'm passionate about leveraging technology to solve real-world problems, from combating misinformation to improving air quality monitoring across Africa.",
   github: "https://github.com/kasasa22",
   resume:
-    "https://drive.google.com/file/d/1_A3tVUpR9dXJHjOfc-eXlAKRHjqDE5cX/view?usp=drive_link",
-  linkedin: "https://www.linkedin.com/in/kasasa-livingstone-913a76254/",
+    "https://docs.google.com/document/d/1dgizH7IhFR4ikEgj7OTETcu-RmAC9rcO/edit?usp=sharing&ouid=104262005523127815803&rtpof=true&sd=true",
+  linkedin: "http://linkedin.com/in/KasasaTrevor",
   twitter: "https://twitter.com/KasasaLivingstone",
   insta: "https://www.instagram.com/kasasatrevor/",
   facebook: "https://www.facebook.com/trevor/",
+  email: "kasasatrevor25@gmail.com",
+  phone: "+256704967769",
 };
 
 export const skills = [
@@ -65,6 +69,21 @@ export const skills = [
         name: "Flutter",
         image:
           "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
+      },
+      {
+        name: "Next.js",
+        image:
+          "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg",
+      },
+      {
+        name: "Vue.js",
+        image:
+          "https://vuejs.org/images/logo.png",
+      },
+      {
+        name: "TypeScript",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
       },
     ],
   },
@@ -114,6 +133,22 @@ export const skills = [
         "name": "Laravel",
         "image": "https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-plain-wordmark.svg"
       },
+      {
+        "name": "Flask",
+        "image": "https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg"
+      },
+      {
+        "name": "PostgreSQL",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg"
+      },
+      {
+        "name": "Apache Airflow",
+        "image": "https://airflow.apache.org/docs/apache-airflow/stable/_images/pin_large.png"
+      },
+      {
+        "name": "Neo4j",
+        "image": "https://dist.neo4j.com/wp-content/uploads/20210423062553/neo4j-social-share-21.png"
+      },
     ],
   },
  
@@ -140,6 +175,14 @@ export const skills = [
       {
         "name": "Apache Spark",
         "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg"
+      },
+      {
+        "name": "Dify",
+        "image": "https://avatars.githubusercontent.com/u/132536224?s=200&v=4"
+      },
+      {
+        "name": "Ollama",
+        "image": "https://github.com/ollama/ollama/assets/3325447/0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7"
       }
     ]
   },
@@ -170,6 +213,18 @@ export const skills = [
       {
         "name": "Figma",
         "image": "https://s3-alpha.figma.com/hub/file/1481185752/fa4cd070-6a79-4e1b-b079-8b9b76408595-cover.png"
+      },
+      {
+        "name": "Docker",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg"
+      },
+      {
+        "name": "AJAX",
+        "image": "https://img.icons8.com/ios/452/ajax.png"
+      },
+      {
+        "name": "Google Cloud Storage",
+        "image": "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg"
       }
     ]
   }
@@ -179,97 +234,76 @@ export const skills = [
 export const experiences = [
   {
     id: 0,
+    img: aibos,
+    role: "Software Engineer",
+    company: "AIBOS-UG",
+    date: "Dec 2024 - Present",
+    desc: "Leading AI infrastructure development and fact-checking platform engineering. Configured AI Agents with Dify + Ollama, developed a comprehensive fact-checking platform processing 1,000+ social media URLs weekly to combat misinformation, reduced misinformation reach by 40% through early detection. Built Neo4j network analysis pipelines for influencer detection and cluster identification, implemented reverse image/video search with GCS storage optimization, and developed mobile data collection app with Twitter/X wellness analysis features.",
+    skills: [
+      "Dify",
+      "Ollama",
+      "Neo4j",
+      "Python",
+      "React Native",
+      "Google Cloud Storage",
+      "Network Analysis",
+      "AI/ML Integration",
+      "Mobile Development",
+    ],
+    doc: "",
+  },
+  {
+    id: 1,
+    img: airqo,
+    role: "Software Engineer (Volunteer)",
+    company: "AirQo",
+    date: "Jan 2025 - July 2025",
+    desc: "Designed and developed a comprehensive device monitoring system from scratch using Next.js, Apache Airflow, and PostgreSQL for 700+ air quality sensors. Achieved 99.5% real-time device visibility from zero monitoring capability, preventing data loss that previously affected 30% of devices. Implemented analytics dashboards identifying 15+ high-risk sites with 40% more downtime, reducing network downtime by 35%. Built automated alerting system that reduced troubleshooting time from 3 hours to 15 minutes per incident and improved first-visit fix rate from 40% to 85%.",
+    skills: [
+      "Next.js",
+      "Apache Airflow",
+      "PostgreSQL",
+      "Time-Series Data",
+      "Real-Time Systems",
+      "Data Pipelines",
+      "Dashboard Development",
+      "System Architecture",
+    ],
+    doc: "",
+  },
+  {
+    id: 2,
     img: muk,
     role: "Software Engineering Intern",
-    company: "DICTS, Makerere University",
-    date: "May 2024 - Aug 2024",
-    desc: "Collaborated on the Makerere Single Sign-On (SSO) system development, which assigned webmail accounts to students. I focused on developing APIs essential for testing webmail creation, student validation, and recovery email updates.",
+    company: "Directorate for ICT Support (DICTS), Makerere University",
+    date: "May 2024 - Sept 2024",
+    desc: "Contributed to re-development of Makerere University Single Sign-On (MAK-SSO) system addressing chronic performance issues. Achieved 80% faster page load times, reduced authentication steps from 6 clicks to 2, improved mobile login success rate from 45% to 90% while handling 10,000+ daily authentication requests. Refactored backend APIs for webmail creation, student validation, and recovery email updates. Redesigned API testing workflows and implemented recovery mechanisms that reduced support requests.",
     skills: [
       "API Development",
       "PHP",
       "Laravel",
-      "Webmail Integration",
+      "Authentication Systems",
+      "Performance Optimization",
+      "Mobile Responsiveness",
       "Database Management",
     ],
-    doc: "https://example.com/sso_project_doc.pdf", 
+    doc: "", 
   },
   {
-    id: 1,
+    id: 3,
     img: rental, 
     role: "Full Stack Developer (Freelancing)",
-    company: "Freelance",
+    company: "S/N Plaza, Ntinda",
     date: "March 2022 - Present",
-    desc: "Developed a property rental management system using PHP, JavaScript, and AJAX. The system tracks tenant details, payment schedules, and generates monthly reports to assist property owners in managing rentals efficiently.",
+    desc: "Developed a property rental management system for S/N Plaza using PHP, JavaScript, and AJAX. The system automates tracking of tenant records, payment dates, and identifies defaulters. Generates monthly reports helping property managers streamline rent collection and manage multiple rental units efficiently.",
     skills: [
       "PHP",
       "JavaScript",
       "AJAX",
       "MySQL",
-      "Web Development",
+      "Report Generation",
     ],
-    doc: "https://example.com/rental_management_doc.pdf", 
-  },
-  {
-    id: 2,
-    img: car, 
-    role: "Full Stack Developer (Freelancing)",
-    company: "Freelance",
-    date: "March 2022 - Present",
-    desc: "Built a car management system using PHP and Laravel, which helps car dealerships track vehicle sales, payments (full or installment), and user interactions. The system streamlines operations for dealerships.",
-    skills: [
-      "PHP",
-      "Laravel",
-      "MySQL",
-      "JavaScript",
-      "Web Development",
-    ],
-    doc: "https://example.com/car_management_doc.pdf", 
-  },
-  {
-    id: 3,
-    img: travel, 
-    role: "Full Stack Developer (Freelancing)",
-    company: "Freelance",
-    date: "March 2022 - Present",
-    desc: "Developed a tours and travel website that allows users to browse services, book trips, and communicate with company owners. Integrated PHP to manage bookings and customer support inquiries.",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "PHP",
-      "Web Development",
-    ],
-    doc: "https://example.com/tours_travel_doc.pdf", 
-  },
-  {
-    id: 4,
-    img: app, 
-    role: "Frontend Developer",
-    company: "Personal Project",
-    date: "2024",
-    desc: "Built a weather application using ReactJS and Rapid API to deliver real-time weather forecasts to users in an intuitive interface.",
-    skills: [
-      "ReactJS",
-      "Rapid API",
-      "JavaScript",
-      "Web Development",
-    ],
-    doc: "https://example.com/weather_app_doc.pdf", 
-  },
-  {
-    id: 5,
-    img: pham, 
-    role: "Full Stack Developer",
-    company: "Personal Project",
-    date: "2024",
-    desc: "Designed and implemented a pharmacy management system using PHP and MySQL. This system manages medicine categories, cashier details, inventory, and sales data, providing a responsive interface for administrators and cashiers.",
-    skills: [
-      "PHP",
-      "MySQL",
-      "JavaScript",
-      "Web Development",
-    ],
-    doc: "https://example.com/pharmacy_system_doc.pdf", 
+    doc: "", 
   },
 ];
 
@@ -288,9 +322,9 @@ export const education = [
     id: 1,
     img: educ1,
     school: "Makerere University",
-    date: "jan 2021 - Present",
-    grade: "....",
-    desc: "I am currently pursuing a Bachelor of Science in Software Engineering at Makerere University, where I am gaining expertise in software development, computer science fundamentals, and problem-solving through various projects and coursework.",
+    date: "Jan 2021 - May 2025",
+    grade: "Expected Graduation: May 2025",
+    desc: "Currently pursuing a Bachelor of Science in Software Engineering at Makerere University, where I am gaining expertise in software development, computer science fundamentals, and problem-solving through various projects and coursework. Developing strong foundations in algorithms, data structures, software design patterns, and system architecture.",
     degree: "Bachelor of Science in Software Engineering",
   },
  
@@ -299,74 +333,74 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Car Management System",
-    date: "Jan 2024 - Mar 2024",
+    title: "Rental Management System (S/N Plaza, Ntinda)",
+    date: "May 2024 - Jun 2024",
     description:
-      "Created a car sales management system using PHP with the Laravel framework. The system records vehicle details, tracks payments (both full and installment), and monitors transactions by individual users. It helps manage sales, installment plans, and customer interactions for car dealerships.",
-    image: car,
-    tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "jQuery"],
-    category: "web app",
-    github: "https://github.com/kasasa22/Car_management.git",
-    webapp: "https://car-mgt.com/",
-  },
-  {
-    id: 2,
-    title: "Rental Management system",
-    date: "May 2024 - jun 2024",
-    description:
-      "Developed a property rental management system using PHP, JavaScript, and AJAX. The system tracks tenant details, payment dates, and outstanding balances. It generates monthly reports on payments and identifies defaulters, assisting property owners in managing their rental properties efficiently.",
+      "Developed a comprehensive property rental management system for S/N Plaza using PHP, JavaScript, and AJAX. The system automates tracking of tenant records, payment schedules, and identifies defaulters. Generates monthly reports helping property managers streamline rent collection and manage multiple rental units efficiently. Successfully deployed for managing residential properties in Ntinda.",
     image: rental,
-    tags: ["PHP", "Laravel", "MySQL", "Chart.js"],
+    tags: ["PHP", "JavaScript", "AJAX", "MySQL", "Chart.js"],
     category: "web app",
     github: "https://github.com/kasasa22/Rental_Management_system.git",
-    webapp: "https://mycompany-reports.com/",
-  },
-  {
-    id: 3,
-    title: "Tours and Travel Website",
-    date: "June 2024",
-    description:
-      "Developed a website for a travel company using HTML, CSS, and JavaScript. The website advertises services, facilitates bookings, and supports communication between clients and company owners. The booking and support features were implemented using PHP to handle customer inquiries and reservations.",
-    image: travel,
-    tags: ["Node.js", "Express", "MongoDB", "Docker", "CI/CD"],
-    category: "backend system",
-    github: "https://github.com/kasasa22/PleasureSafarTours.git",
     webapp: "",
   },
   {
-    id: 4,
-    title: "Portfolio Website",
-    date: "sept 2024",
+    id: 2,
+    title: "Car Sales Management System",
+    date: "Jan 2024 - Mar 2024",
     description:
-      "A personal portfolio website to showcase my projects and skills. Developed using React and Three.js for interactive 3D effects and dynamic project showcases.",
-    image: port,
-    tags: ["React", "Three.js", "Tailwind CSS"],
-    category: "personal website",
-    github: "https://github.com/kasasa22/Portifolio_website.git",
-    webapp: "https://kasasa.dev/",
+      "Built a comprehensive car sales management system using Laravel (PHP) for a local car dealership. The system records vehicle details, manages both full and installment payments, tracks customer transactions, and streamlines dealership operations. Features include inventory management, payment tracking, customer relationship management, and sales reporting.",
+    image: car,
+    tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "JavaScript"],
+    category: "web app",
+    github: "https://github.com/kasasa22/Car_management.git",
+    webapp: "",
   },
   {
-    id: 5,
-    title: "Phamacy Management System",
+    id: 3,
+    title: "Pharmacy Management System",
     date: "Apr 2023 - Jun 2023",
     description:
-      "Designed and implemented a comprehensive pharmacy management system using PHP and MySQL. The system facilitates the management of medicine categories, cashier details, medicine inventory, and sales data. It includes features for adding, editing, and viewing all relevant information in the pharmacy, and provides a secure, responsive interface for administrators and cashiers to track sales and make informed decisions. The system is reliable and available 24/7.",
-    image: "/assets/images/wireless-monitoring-system.jpg",
-    tags: ["UniFi", "WiFi Man", "Python", "Grafana"],
-    category: "network tools",
+      "Implemented a comprehensive pharmacy management system using PHP and MySQL for a private pharmacy business in Kampala. The system provides inventory management, cashier tracking, medicine categorization, and sales reporting. Features include real-time stock monitoring, expiry date tracking, prescription management, and detailed sales analytics to help pharmacy owners make informed business decisions.",
+    image: pham,
+    tags: ["PHP", "MySQL", "JavaScript", "Bootstrap", "AJAX"],
+    category: "web app",
     github: "https://github.com/kasasa22/pharmacy.git",
     webapp: "",
   },
   {
-    id: 6,
+    id: 4,
+    title: "Tours and Travel Website",
+    date: "June 2024",
+    description:
+      "Developed a tours and travel website that allows users to browse tour packages, book trips, and communicate with company representatives. Built with HTML, CSS, JavaScript, and PHP for backend functionality. Features include tour package display, booking management system, customer inquiry handling, and integrated contact forms for seamless client-company communication.",
+    image: travel,
+    tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    category: "web app",
+    github: "https://github.com/kasasa22/PleasureSafarTours.git",
+    webapp: "",
+  },
+  {
+    id: 5,
     title: "Weather App",
     date: "Mar 2024 - Apr 2024",
     description:
-      "Built a simple and intuitive weather application using ReactJS, powered by Rapid API. The app provides users with accurate real-time weather forecasts, keeping them informed of weather conditions wherever they are.",
+      "Built an intuitive weather application using ReactJS integrated with Rapid API. The app provides real-time weather forecasts, current conditions, and weather alerts for any location worldwide. Features include location-based weather updates, 7-day forecasts, weather maps, and responsive design for mobile and desktop users.",
     image: app,
-    tags: ["Node.js", "Express", "MySQL", "REST API"],
-    category: "API development",
+    tags: ["ReactJS", "Rapid API", "JavaScript", "CSS", "REST API"],
+    category: "web app",
     github: "https://github.com/kasasa22/Weather-App.git",
+    webapp: "",
+  },
+  {
+    id: 6,
+    title: "Portfolio Website",
+    date: "Sept 2024",
+    description:
+      "Designed and developed a personal portfolio website to showcase projects, skills, and professional experience. Built using React.js with Three.js for interactive 3D animations and effects. Features include dynamic project showcases, responsive design, contact forms, and smooth animations to create an engaging user experience.",
+    image: port,
+    tags: ["React.js", "Three.js", "Tailwind CSS", "JavaScript"],
+    category: "personal website",
+    github: "https://github.com/kasasa22/Portifolio_website.git",
     webapp: "",
   },
 ];
