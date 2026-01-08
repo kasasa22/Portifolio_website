@@ -9,6 +9,12 @@ import pham from '../images/pham.jpeg'
 import port from '../images/port.png'
 import aibos from '../images/kasasa.jpeg'
 import airqo from '../images/muk.png'
+// New project images - using placeholder paths (replace with actual screenshots)
+import airqoMonitor from '../images/muk.png'  // TODO: Replace with actual AirQo monitoring system screenshot
+import ecommerce from '../images/muk.png'  // TODO: Replace with actual e-commerce system screenshot
+import footballManager from '../images/muk.png'  // TODO: Replace with actual football manager screenshot
+import soccerTeam from '../images/muk.png'  // TODO: Replace with actual soccer team manager screenshot
+import merchantHub from '../images/muk.png'  // TODO: Replace with actual MerchantHub screenshot
 
 export const Bio = {
   name: "Kasasa Livingstone Trevor",
@@ -332,7 +338,67 @@ export const education = [
 
 export const projects = [
   {
+    id: 0,
+    title: "MerchantHub - Multi-Tenant SaaS Platform",
+    date: "2024 - Present",
+    description:
+      "A multi-tenant SaaS platform designed to help small and medium-sized businesses manage their sales, products, inventory, and shops efficiently. Features include multi-shop support with data isolation, user authentication with Owner/Staff roles, product catalog and inventory management, sales/orders tracking, and real-time analytics. Built with Vue.js 3 + Vuetify for web, React Native + Expo for mobile, and FastAPI with PostgreSQL backend.",
+    image: merchantHub,
+    tags: ["Vue.js", "React Native", "FastAPI", "PostgreSQL", "Docker", "Expo", "SQLAlchemy"],
+    category: "web app",
+    github: "https://github.com/kasasa22/merchanthub-platform",
+    webapp: "",
+  },
+  {
     id: 1,
+    title: "AirQo Device Health Monitoring System",
+    date: "Jan 2025 - July 2025",
+    description:
+      "Designed and developed a comprehensive device monitoring system from scratch for 700+ air quality sensors using Next.js, FastAPI, Apache Airflow, and PostgreSQL. Achieved 99.5% real-time device visibility, preventing data loss that previously affected 30% of devices. Built analytics dashboards identifying high-risk sites with 40% more downtime, reducing overall network downtime by 35%. Implemented automated alerting that reduced troubleshooting time from 3 hours to 15 minutes per incident.",
+    image: airqoMonitor,
+    tags: ["Next.js", "FastAPI", "PostgreSQL", "Apache Airflow", "Docker", "dbt", "TypeScript"],
+    category: "web app",
+    github: "https://github.com/kasasa22/Airqo-Device-Monitoring-System",
+    webapp: "",
+  },
+  {
+    id: 2,
+    title: "E-commerce Inventory & Sales Management",
+    date: "2024",
+    description:
+      "Built a comprehensive e-commerce inventory and sales management system using Vue 3, Vite, and Supabase (PostgreSQL). Features include product management, sales tracking, role-based access control (Superadmin, Admin, Seller), inventory monitoring, and detailed reporting. The system helps businesses track stock levels, manage sales transactions, and generate business intelligence reports.",
+    image: ecommerce,
+    tags: ["Vue.js", "Vite", "Supabase", "PostgreSQL", "Tailwind CSS", "JavaScript"],
+    category: "web app",
+    github: "https://github.com/kasasa22/E-commerce-website",
+    webapp: "",
+  },
+  {
+    id: 3,
+    title: "Football Manager - Payment Management System",
+    date: "2024",
+    description:
+      "Developed a football team payment management system using Next.js 14, FastAPI, PostgreSQL, and Docker. Features comprehensive payment tracking for players, annual/monthly/pitch/match day reports, and settings management. Built with TypeScript, Tailwind CSS, and shadcn/ui for a modern, responsive interface. Containerized with Docker for easy deployment.",
+    image: footballManager,
+    tags: ["Next.js", "FastAPI", "PostgreSQL", "Docker", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    category: "web app",
+    github: "https://github.com/kasasa22/Football_Management_App",
+    webapp: "",
+  },
+  {
+    id: 4,
+    title: "Munyonyo Soccer Team Manager",
+    date: "2024 - 2025",
+    description:
+      "Built a comprehensive soccer team management application using Next.js 15 and Firebase. Features payment management, player management, role-based access (Admin, Manager, Treasurer, Viewer), comprehensive reports with PDF export, and a modern dashboard. Implements real-time data sync with Firebase and responsive design with shadcn/ui components.",
+    image: soccerTeam,
+    tags: ["Next.js", "Firebase", "TypeScript", "Tailwind CSS", "shadcn/ui", "PDF Export"],
+    category: "web app",
+    github: "https://github.com/kasasa22/Munyonyo-Soccer-Team",
+    webapp: "",
+  },
+  {
+    id: 5,
     title: "Rental Management System (S/N Plaza, Ntinda)",
     date: "May 2024 - Jun 2024",
     description:
@@ -344,7 +410,7 @@ export const projects = [
     webapp: "",
   },
   {
-    id: 2,
+    id: 6,
     title: "Car Sales Management System",
     date: "Jan 2024 - Mar 2024",
     description:
@@ -356,7 +422,7 @@ export const projects = [
     webapp: "",
   },
   {
-    id: 3,
+    id: 7,
     title: "Pharmacy Management System",
     date: "Apr 2023 - Jun 2023",
     description:
@@ -368,7 +434,7 @@ export const projects = [
     webapp: "",
   },
   {
-    id: 4,
+    id: 8,
     title: "Tours and Travel Website",
     date: "June 2024",
     description:
@@ -380,7 +446,7 @@ export const projects = [
     webapp: "",
   },
   {
-    id: 5,
+    id: 9,
     title: "Weather App",
     date: "Mar 2024 - Apr 2024",
     description:
@@ -392,7 +458,7 @@ export const projects = [
     webapp: "",
   },
   {
-    id: 6,
+    id: 10,
     title: "Portfolio Website",
     date: "Sept 2024",
     description:
