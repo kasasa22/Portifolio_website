@@ -48,28 +48,34 @@ const Desc = styled.div`
 
 const SkillsContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   margin-top: 20px;
-  gap: 50px;
+  gap: 30px;
   justify-content: center;
+  max-width: 1000px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 `;
 
 const Skill = styled.div`
   width: 100%;
-  max-width: 500px;
+  min-height: 280px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
   border-radius: 16px;
   padding: 18px 36px;
+  display: flex;
+  flex-direction: column;
   @media (max-width: 768px) {
-    max-width: 400px;
+    min-height: auto;
     padding: 10px 36px;
   }
 
   @media (max-width: 500px) {
-    max-width: 330px;
     padding: 10px 36px;
   }
 `;
