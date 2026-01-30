@@ -1,7 +1,6 @@
 import React from "react";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import styled from "styled-components";
-import seeta from '../../images/seeta.png'
 
 const Top = styled.div`
   width: 100%;
