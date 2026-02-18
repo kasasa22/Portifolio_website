@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { projects } from "../data/constants";
 import ProjectCard from "../components/cards/ProjectCard";
 import { ArrowBack } from "@mui/icons-material";
@@ -162,6 +163,11 @@ const AllProjects = () => {
       animate="animate"
       exit="exit"
     >
+      <Helmet>
+        <title>Projects | Kasasa Trevor</title>
+        <meta name="description" content="Browse all projects by Kasasa Trevor - Full stack web applications, mobile apps, and SaaS platforms built with React, Node.js, Flutter, and more." />
+        <link rel="canonical" href="https://kasasalivingstonetrevor.me/projects" />
+      </Helmet>
       <Content>
         <BackButton onClick={() => navigate("/")}>
           <ArrowBack /> Back to Home
