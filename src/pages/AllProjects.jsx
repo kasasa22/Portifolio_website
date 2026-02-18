@@ -164,8 +164,8 @@ const AllProjects = () => {
       exit="exit"
     >
       <Helmet>
-        <title>Projects | Kasasa Trevor</title>
-        <meta name="description" content="Browse all projects by Kasasa Trevor - Full stack web applications, mobile apps, and SaaS platforms built with React, Node.js, Flutter, and more." />
+        <title>Projects | Kasasa Livingstone Trevor - Software Engineer</title>
+        <meta name="description" content="Browse software projects by Kasasa Livingstone Trevor - Full stack web applications, mobile apps, and platforms built with React, Node.js, Python, Flutter." />
         <link rel="canonical" href="https://kasasalivingstonetrevor.me/projects" />
       </Helmet>
       <Content>
