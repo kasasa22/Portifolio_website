@@ -3,6 +3,7 @@ import { darkTheme } from "./utils/Themes";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { HelmetProvider } from "react-helmet-async";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 import AllProjects from "./pages/AllProjects";
@@ -32,15 +33,17 @@ const AnimatedRoutes = () => {
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Navbar />
-        <Body>
-          <AnimatedRoutes />
-        </Body>
-      </BrowserRouter>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={darkTheme}>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Navbar />
+          <Body>
+            <AnimatedRoutes />
+          </Body>
+        </BrowserRouter>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 
