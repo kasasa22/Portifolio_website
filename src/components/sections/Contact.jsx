@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
 import styled from "styled-components";
-import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import { WhatsApp, Email, Phone, LocationOn } from "@mui/icons-material";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-contnet: center;
-  position: rlative;
+  justify-content: center;
+  position: relative;
   z-index: 1;
   align-items: center;
+  padding: 60px 16px;
 `;
 
 const Wrapper = styled.div`
@@ -20,130 +21,248 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1100px;
   gap: 12px;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
 `;
-const Title = styled.div`
+
+const Title = styled(motion.div)`
   font-size: 52px;
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
   color: ${({ theme }) => theme.text_primary};
+
   @media (max-width: 768px) {
     margin-top: 12px;
     font-size: 32px;
   }
 `;
-const Desc = styled.div`
+
+const Desc = styled(motion.div)`
   font-size: 18px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
+
   @media (max-width: 768px) {
     font-size: 16px;
   }
 `;
 
-const ContactForm = styled.div`
-  width: 95%;
-  max-width: 600px;
+const ContactContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  background-color: rgba(17, 25, 40, 0.83);
-  border: 1px solid rgba(255, 255, 255, 0.125);
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: rgba(23, 92, 230, 0.1) 0px 4px 24px;
-  margin-top: 28px;
-  gap: 12px;
-`;
-const ContactTitle = styled.div`
-  font-size: 28px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.text_primary};
-`;
-const ContactInput = styled.input`
-  flex: 1;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.text_secondary + 50};
-  outline: none;
-  font-size: 18px;
-  color: ${({ theme }) => theme.text_primary};
-  border-radius: 12px;
-  padding: 12px 16px;
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
-  }
-`;
-const ContactInputMessage = styled.textarea`
-  flex: 1;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.text_secondary + 50};
-  outline: none;
-  font-size: 18px;
-  color: ${({ theme }) => theme.text_primary};
-  border-radius: 12px;
-  padding: 12px 16px;
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
-  }
-`;
-const ContactButton = styled.input`
+  align-items: center;
+  gap: 32px;
+  margin-top: 40px;
   width: 100%;
-  text-decoration: none;
-  text-align: center;
-  background: hsla(271, 100%, 50%, 1);
-  padding: 13px 16px;
-  margin-top: 2px;
+  max-width: 600px;
+`;
+
+const ContactCard = styled(motion.div)`
+  width: 100%;
+  background-color: ${({ theme }) => theme.card};
+  border: 1px solid ${({ theme }) => theme.card_light};
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  }
+`;
+
+const ContactItem = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
   border-radius: 12px;
-  border: none;
+  background: ${({ theme }) => theme.bgLight};
+  border: 1px solid ${({ theme }) => theme.card_light};
+  text-decoration: none;
   color: ${({ theme }) => theme.text_primary};
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.primary};
+    transform: translateX(8px);
+  }
+`;
+
+const IconWrapper = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${({ $color }) => $color || "#25D366"};
+  color: white;
+
+  svg {
+    font-size: 24px;
+  }
+`;
+
+const ContactInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+const ContactLabel = styled.span`
+  font-size: 12px;
+  color: ${({ theme }) => theme.text_secondary};
+  text-transform: uppercase;
+  letter-spacing: 1px;
+`;
+
+const ContactValue = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text_primary};
+`;
+
+const WhatsAppButton = styled(motion.a)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 32px;
+  background: #25D366;
+  border: none;
+  border-radius: 12px;
+  color: white;
   font-size: 18px;
   font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+  }
+
+  svg {
+    font-size: 28px;
+  }
+`;
+
+const Divider = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  color: ${({ theme }) => theme.text_secondary};
+  font-size: 14px;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: ${({ theme }) => theme.card_light};
+  }
 `;
 
 const Contact = () => {
-  const form = useRef();
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_fmx04mk",
-        "template_50e4bwq",
-        form.current,
-        "Puc1HfxfDOFpFOfqJ"
-      )
-      .then(
-        (result) => {
-          alert("Message Sent");
-          form.current.result();
-        },
-        (error) => {
-          alert(error);
-        }
-      );
-  };
+  const phoneNumber = "256704967769"; // Uganda country code + number
+  const whatsappMessage = encodeURIComponent("Hi Trevor! I visited your portfolio and would like to connect with you.");
+
   return (
-    <Container id="Education">
+    <Container id="Contact">
       <Wrapper>
-        <Title>Contact</Title>
+        <Title
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          Contact
+        </Title>
         <Desc
-          style={{
-            marginBottom: "40px",
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           Feel free to reach out to me for any questions or opportunities!
         </Desc>
-        <ContactForm onSubmit={handelSubmit}>
-          <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
-          <ContactButton type="submit" value="Send" />
-        </ContactForm>
+
+        <ContactContainer
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <WhatsAppButton
+            href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <WhatsApp /> Chat on WhatsApp
+          </WhatsAppButton>
+
+          <Divider>or reach me at</Divider>
+
+          <ContactCard>
+            <ContactItem
+              href={`https://wa.me/${phoneNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconWrapper $color="#25D366">
+                <WhatsApp />
+              </IconWrapper>
+              <ContactInfo>
+                <ContactLabel>WhatsApp</ContactLabel>
+                <ContactValue>+256 704 967 769</ContactValue>
+              </ContactInfo>
+            </ContactItem>
+
+            <ContactItem
+              href="tel:+256704967769"
+            >
+              <IconWrapper $color="#854CE6">
+                <Phone />
+              </IconWrapper>
+              <ContactInfo>
+                <ContactLabel>Phone</ContactLabel>
+                <ContactValue>+256 704 967 769</ContactValue>
+              </ContactInfo>
+            </ContactItem>
+
+            <ContactItem
+              href="mailto:kasasatrevor25@gmail.com"
+            >
+              <IconWrapper $color="#EA4335">
+                <Email />
+              </IconWrapper>
+              <ContactInfo>
+                <ContactLabel>Email</ContactLabel>
+                <ContactValue>kasasatrevor25@gmail.com</ContactValue>
+              </ContactInfo>
+            </ContactItem>
+
+            <ContactItem as="div" style={{ cursor: "default" }}>
+              <IconWrapper $color="#4285F4">
+                <LocationOn />
+              </IconWrapper>
+              <ContactInfo>
+                <ContactLabel>Location</ContactLabel>
+                <ContactValue>Kampala, Uganda</ContactValue>
+              </ContactInfo>
+            </ContactItem>
+          </ContactCard>
+        </ContactContainer>
       </Wrapper>
     </Container>
   );
