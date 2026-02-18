@@ -57,8 +57,8 @@ const Home = () => {
       exit="exit"
     >
       <Helmet>
-        <title>Kasasa Trevor | Full Stack Developer</title>
-        <meta name="description" content="Kasasa Trevor - Full Stack Developer specializing in React, Node.js, and mobile development. View my portfolio of web and mobile applications." />
+        <title>Kasasa Livingstone Trevor | Software Engineer & Full Stack Developer</title>
+        <meta name="description" content="Kasasa Livingstone Trevor - Software Engineer and Full Stack Developer from Uganda. Expert in React, Node.js, Python, Flutter, and mobile app development." />
         <link rel="canonical" href="https://kasasalivingstonetrevor.me" />
       </Helmet>
       <Hero />
