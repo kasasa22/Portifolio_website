@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Hero from "../components/sections/Hero";
 import Skills from "../components/sections/Skills";
 import Experience from "../components/sections/Experience";
@@ -55,6 +56,11 @@ const Home = () => {
       animate="animate"
       exit="exit"
     >
+      <Helmet>
+        <title>Kasasa Trevor | Full Stack Developer</title>
+        <meta name="description" content="Kasasa Trevor - Full Stack Developer specializing in React, Node.js, and mobile development. View my portfolio of web and mobile applications." />
+        <link rel="canonical" href="https://kasasalivingstonetrevor.me" />
+      </Helmet>
       <Hero />
       <Wrapper>
         <Skills />
