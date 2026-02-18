@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Link as LinkR } from "react-router-dom";
-import styled, { useTheme } from "styled-components";
+import { useState } from "react";
+import { Link as LinkR, useLocation, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Bio } from "../data/constants";
-import { MenuRounded } from "@mui/icons-material";
+import { MenuRounded, Close } from "@mui/icons-material";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Nav = styled.div`
+const Nav = styled.nav`
   background-color: ${({ theme }) => theme.bg};
   height: 80px;
   display: flex;
@@ -13,8 +14,12 @@ const Nav = styled.div`
   font-size: 1rem;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   color: white;
+  backdrop-filter: blur(10px);
+  background-color: ${({ theme }) => theme.bg + "ee"};
+  border-bottom: 1px solid ${({ theme }) => theme.card_light};
+  transition: all 0.3s ease;
 `;
 
 const NavbarContainer = styled.div`
@@ -26,17 +31,28 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   font-size: 1rem;
 `;
+
 const NavLogo = styled(LinkR)`
-  width: 80%;
   padding: 0 6px;
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 20px;
   text-decoration: none;
-  color: inherit;
+  color: ${({ theme }) => theme.text_primary};
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+  }
+
+  span {
+    color: ${({ theme }) => theme.primary};
+  }
 `;
 
 const NavItems = styled.ul`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,18 +71,19 @@ const NavLink = styled.a`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
 `;
 
 const ButtonContainer = styled.div`
-  width: 80%;
-  height: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
+  gap: 12px;
   padding: 0 6px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -81,103 +98,199 @@ const GithubButton = styled.a`
   border-radius: 20px;
   cursor: pointer;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.3s ease;
   text-decoration: none;
+
   &:hover {
     background: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.text_primary};
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px ${({ theme }) => theme.primary}40;
   }
 `;
 
 const MobileIcon = styled.div`
-  height: 100%;
-  display: flex;
+  display: none;
   align-items: center;
   color: ${({ theme }) => theme.text_primary};
-  display: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.card_light};
+  }
+
   @media screen and (max-width: 768px) {
-    display: block;
+    display: flex;
   }
 `;
 
-const MobileMenu = styled.ul`
-  width: 100%;
+const MobileMenuOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+`;
+
+const MobileMenu = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background: ${({ theme }) => theme.card};
+  z-index: 100;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 16px;
-  padding: 0 6px;
-  list-style: none;
-  width: 100%;
-  padding: 12px 40px 24px 40px;
-  background: ${({ theme }) => theme.card_light + 99};
-  position: absolute;
-  top: 80px;
-  right: 0;
+  padding: 80px 30px 30px;
+  gap: 24px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+`;
 
-  transition: all 0.6s ease-in-out;
-  transform: ${({ isOpen }) =>
-    isOpen ? "translateY(0)" : "translateY(-100%)"};
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
-  z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
+const MobileMenuHeader = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+`;
+
+const MobileNavLink = styled.a`
+  color: ${({ theme }) => theme.text_primary};
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid ${({ theme }) => theme.card_light};
+
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+    padding-left: 10px;
+  }
+`;
+
+const MobileGithubButton = styled.a`
+  margin-top: auto;
+  background: ${({ theme }) => theme.primary};
+  color: white;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const theme = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isHomePage = location.pathname === "/";
+
+  const handleNavClick = (e, sectionId) => {
+    if (!isHomePage) {
+      e.preventDefault();
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+    setIsOpen(false);
+  };
+
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/">Kasasa Trevor</NavLogo>
+        <NavLogo to="/">
+          Kasasa <span>Trevor</span>
+        </NavLogo>
 
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
-          <MenuRounded style={{ color: "inherit" }} />
+          <MenuRounded />
         </MobileIcon>
 
         <NavItems>
-          <NavLink href="#About">About</NavLink>
-          <NavLink href="#Skills">Skills</NavLink>
-          <NavLink href="#Experience">Experience</NavLink>
-          <NavLink href="#Projects">Projects</NavLink>
-          <NavLink href="#Education">Education</NavLink>
+          <NavLink href="/#About" onClick={(e) => handleNavClick(e, "About")}>About</NavLink>
+          <NavLink href="/#Skills" onClick={(e) => handleNavClick(e, "Skills")}>Skills</NavLink>
+          <NavLink href="/#Experience" onClick={(e) => handleNavClick(e, "Experience")}>Experience</NavLink>
+          <NavLink href="/#Projects" onClick={(e) => handleNavClick(e, "Projects")}>Projects</NavLink>
+          <NavLink href="/#Education" onClick={(e) => handleNavClick(e, "Education")}>Education</NavLink>
+          <NavLink href="/#Contact" onClick={(e) => handleNavClick(e, "Contact")}>Contact</NavLink>
         </NavItems>
 
-        {isOpen && (
-          <MobileMenu isOpen={isOpen}>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#About">
-              About
-            </NavLink>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Skills">
-              Skills
-            </NavLink>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Experience">
-              Experience
-            </NavLink>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Projects">
-              Projects
-            </NavLink>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Education">
-              Education
-            </NavLink>
-            <GithubButton
-              href={Bio.github}
-              target="_Blank"
-              style={{
-                background: theme.primary,
-                color: theme.text_primary,
-              }}
-            >
-              Github Profile
-            </GithubButton>
-          </MobileMenu>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              <MobileMenuOverlay
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsOpen(false)}
+              />
+              <MobileMenu
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              >
+                <MobileMenuHeader>
+                  <MobileIcon onClick={() => setIsOpen(false)}>
+                    <Close />
+                  </MobileIcon>
+                </MobileMenuHeader>
+
+                <MobileNavLink href="/#About" onClick={(e) => handleNavClick(e, "About")}>
+                  About
+                </MobileNavLink>
+                <MobileNavLink href="/#Skills" onClick={(e) => handleNavClick(e, "Skills")}>
+                  Skills
+                </MobileNavLink>
+                <MobileNavLink href="/#Experience" onClick={(e) => handleNavClick(e, "Experience")}>
+                  Experience
+                </MobileNavLink>
+                <MobileNavLink href="/#Projects" onClick={(e) => handleNavClick(e, "Projects")}>
+                  Projects
+                </MobileNavLink>
+                <MobileNavLink href="/#Education" onClick={(e) => handleNavClick(e, "Education")}>
+                  Education
+                </MobileNavLink>
+                <MobileNavLink href="/#Contact" onClick={(e) => handleNavClick(e, "Contact")}>
+                  Contact
+                </MobileNavLink>
+
+                <MobileGithubButton
+                  href={Bio.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Github Profile
+                </MobileGithubButton>
+              </MobileMenu>
+            </>
+          )}
+        </AnimatePresence>
 
         <ButtonContainer>
-          <GithubButton href={Bio.github} target="_Blank">
+          <GithubButton href={Bio.github} target="_blank" rel="noopener noreferrer">
             Github Profile
           </GithubButton>
         </ButtonContainer>
