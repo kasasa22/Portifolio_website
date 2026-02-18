@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { projects } from "../data/constants";
 import { ArrowBack, GitHub, Launch, Code, Storage, Cloud, CheckCircle, Warning } from "@mui/icons-material";
 
@@ -349,6 +350,11 @@ const ProjectDetail = () => {
       animate="visible"
       exit={{ opacity: 0 }}
     >
+      <Helmet>
+        <title>{project.title} | Kasasa Trevor</title>
+        <meta name="description" content={project.description} />
+        <link rel="canonical" href={`https://kasasalivingstonetrevor.me/projects/${project.id}`} />
+      </Helmet>
       <Content>
         <BackButton
           onClick={() => navigate(-1)}
