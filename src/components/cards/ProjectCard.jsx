@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { GitHub, OpenInNew } from "@mui/icons-material";
+import { GitHub, OpenInNew, Launch } from "@mui/icons-material";
 
 const Card = styled(motion.div)`
   width: 370px;
@@ -36,6 +36,33 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+`;
+
+const LiveBadge = styled.span`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+  }
 `;
 
 const Image = styled.img`
@@ -246,6 +273,9 @@ const ProjectCard = ({ project }) => {
       transition={{ duration: 0.3 }}
     >
       <ImageContainer>
+        {(project.webapp || (project.liveLinks && project.liveLinks.length > 0)) && (
+          <LiveBadge>Live in Production</LiveBadge>
+        )}
         <Image src={project.image} alt={project.title} />
         <ImageOverlay>
           <OverlayButton as="span" title="View Details">
@@ -269,14 +299,25 @@ const ProjectCard = ({ project }) => {
       </Details>
 
       <ButtonGroup>
-        <Button
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={handleGithubClick}
-        >
-          <GitHub fontSize="small" /> GitHub
-        </Button>
+        {(project.webapp || (project.liveLinks && project.liveLinks[0])) ? (
+          <Button
+            href={project.liveLinks?.[0]?.url || project.webapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleGithubClick}
+          >
+            <Launch fontSize="small" /> Live Site
+          </Button>
+        ) : (
+          <Button
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleGithubClick}
+          >
+            <GitHub fontSize="small" /> GitHub
+          </Button>
+        )}
         <Button primary="true" as="span">
           <OpenInNew fontSize="small" /> Details
         </Button>
