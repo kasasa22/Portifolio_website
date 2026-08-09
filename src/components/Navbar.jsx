@@ -90,24 +90,43 @@ const ButtonContainer = styled.div`
 `;
 
 const GithubButton = styled.a`
-  border: 1px solid ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.primary};
+  border: 1px solid ${({ theme }) => theme.card_light};
+  color: ${({ theme }) => theme.text_primary};
   justify-content: center;
   display: flex;
   align-items: center;
   border-radius: 20px;
   cursor: pointer;
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 10px 18px;
+  font-size: 13px;
   font-weight: 500;
   transition: all 0.3s ease;
   text-decoration: none;
 
   &:hover {
-    background: ${({ theme }) => theme.primary};
-    color: white;
-    transform: scale(1.02);
-    box-shadow: 0 4px 15px ${({ theme }) => theme.primary}40;
+    border-color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.primary};
+  }
+`;
+
+const HireButton = styled.a`
+  background: linear-gradient(135deg, #854ce6 0%, #b552ff 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(133, 76, 230, 0.35);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(133, 76, 230, 0.5);
   }
 `;
 
@@ -230,10 +249,10 @@ const Navbar = () => {
 
         <NavItems>
           <NavLink href="/#About" onClick={(e) => handleNavClick(e, "About")}>About</NavLink>
-          <NavLink href="/#Skills" onClick={(e) => handleNavClick(e, "Skills")}>Skills</NavLink>
-          <NavLink href="/#Experience" onClick={(e) => handleNavClick(e, "Experience")}>Experience</NavLink>
+          <NavLink href="/#Services" onClick={(e) => handleNavClick(e, "Services")}>Services</NavLink>
           <NavLink href="/#Projects" onClick={(e) => handleNavClick(e, "Projects")}>Projects</NavLink>
-          <NavLink href="/#Education" onClick={(e) => handleNavClick(e, "Education")}>Education</NavLink>
+          <NavLink href="/#Experience" onClick={(e) => handleNavClick(e, "Experience")}>Experience</NavLink>
+          <NavLink href="/#Skills" onClick={(e) => handleNavClick(e, "Skills")}>Skills</NavLink>
           <NavLink href="/#Contact" onClick={(e) => handleNavClick(e, "Contact")}>Contact</NavLink>
         </NavItems>
 
@@ -261,28 +280,27 @@ const Navbar = () => {
                 <MobileNavLink href="/#About" onClick={(e) => handleNavClick(e, "About")}>
                   About
                 </MobileNavLink>
-                <MobileNavLink href="/#Skills" onClick={(e) => handleNavClick(e, "Skills")}>
-                  Skills
-                </MobileNavLink>
-                <MobileNavLink href="/#Experience" onClick={(e) => handleNavClick(e, "Experience")}>
-                  Experience
+                <MobileNavLink href="/#Services" onClick={(e) => handleNavClick(e, "Services")}>
+                  Services
                 </MobileNavLink>
                 <MobileNavLink href="/#Projects" onClick={(e) => handleNavClick(e, "Projects")}>
                   Projects
                 </MobileNavLink>
-                <MobileNavLink href="/#Education" onClick={(e) => handleNavClick(e, "Education")}>
-                  Education
+                <MobileNavLink href="/#Experience" onClick={(e) => handleNavClick(e, "Experience")}>
+                  Experience
+                </MobileNavLink>
+                <MobileNavLink href="/#Skills" onClick={(e) => handleNavClick(e, "Skills")}>
+                  Skills
                 </MobileNavLink>
                 <MobileNavLink href="/#Contact" onClick={(e) => handleNavClick(e, "Contact")}>
                   Contact
                 </MobileNavLink>
 
                 <MobileGithubButton
-                  href={Bio.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/#Contact"
+                  onClick={(e) => handleNavClick(e, "Contact")}
                 >
-                  Github Profile
+                  Hire Me
                 </MobileGithubButton>
               </MobileMenu>
             </>
@@ -291,8 +309,11 @@ const Navbar = () => {
 
         <ButtonContainer>
           <GithubButton href={Bio.github} target="_blank" rel="noopener noreferrer">
-            Github Profile
+            GitHub
           </GithubButton>
+          <HireButton href="/#Contact" onClick={(e) => handleNavClick(e, "Contact")}>
+            Hire Me
+          </HireButton>
         </ButtonContainer>
       </NavbarContainer>
     </Nav>

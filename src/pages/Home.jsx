@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Hero from "../components/sections/Hero";
+import Services from "../components/sections/Services";
 import Skills from "../components/sections/Skills";
 import Experience from "../components/sections/Experience";
 import Projects from "../components/sections/Projects";
@@ -57,11 +58,15 @@ const Home = () => {
       exit="exit"
     >
       <Helmet>
-        <title>Kasasa Livingstone Trevor | Software Engineer & Full Stack Developer</title>
-        <meta name="description" content="Kasasa Livingstone Trevor - Software Engineer and Full Stack Developer from Uganda. Expert in React, Node.js, Python, Flutter, and mobile app development." />
+        <title>Kasasa Livingstone Trevor | Hire a Full Stack Software Engineer in Uganda</title>
+        <meta
+          name="description"
+          content="Hire Kasasa Livingstone Trevor — a full-stack software engineer in Kampala, Uganda. I build custom web systems, SaaS platforms, mobile apps and AI solutions in Vue.js, Laravel, React, FastAPI and Python."
+        />
         <link rel="canonical" href="https://kasasalivingstonetrevor.me" />
       </Helmet>
       <Hero />
+      <Services />
       <Wrapper>
         <Skills />
         <Experience />

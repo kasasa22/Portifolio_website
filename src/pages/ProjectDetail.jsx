@@ -3,8 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { projects } from "../data/constants";
-import { ArrowBack, GitHub, Launch, Code, Storage, Cloud, CheckCircle, Warning } from "@mui/icons-material";
+import { projects, architectureDiagrams } from "../data/constants";
+import { ArrowBack, GitHub, Launch, Code, Storage, Cloud, CheckCircle, Warning, AccountTree } from "@mui/icons-material";
+import MermaidDiagram from "../components/MermaidDiagram";
 
 const Container = styled(motion.div)`
   min-height: 100vh;
@@ -383,14 +384,26 @@ const ProjectDetail = () => {
             </TagsContainer>
 
             <ButtonGroup>
+              {project.liveLinks && project.liveLinks.length > 0
+                ? project.liveLinks.map((link, i) => (
+                    <ActionButton
+                      key={i}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      primary={i === 0 ? "true" : undefined}
+                    >
+                      <Launch /> {link.label}
+                    </ActionButton>
+                  ))
+                : project.webapp && (
+                    <ActionButton href={project.webapp} target="_blank" rel="noopener noreferrer" primary="true">
+                      <Launch /> Live Demo
+                    </ActionButton>
+                  )}
               {project.github && (
-                <ActionButton href={project.github} target="_blank" rel="noopener noreferrer" primary="true">
-                  <GitHub /> View on GitHub
-                </ActionButton>
-              )}
-              {project.webapp && (
-                <ActionButton href={project.webapp} target="_blank" rel="noopener noreferrer">
-                  <Launch /> Live Demo
+                <ActionButton href={project.github} target="_blank" rel="noopener noreferrer">
+                  <GitHub /> GitHub
                 </ActionButton>
               )}
             </ButtonGroup>
@@ -403,6 +416,15 @@ const ProjectDetail = () => {
           </SectionTitle>
           <Description>{project.fullDescription || project.description}</Description>
         </Section>
+
+        {project.diagramKey && architectureDiagrams[project.diagramKey] && (
+          <Section variants={itemVariants}>
+            <SectionTitle>
+              <AccountTree /> System Architecture
+            </SectionTitle>
+            <MermaidDiagram chart={architectureDiagrams[project.diagramKey]} />
+          </Section>
+        )}
 
         {project.features && project.features.length > 0 && (
           <Section variants={itemVariants}>

@@ -94,8 +94,8 @@ const containerVariants = {
 const Projects = () => {
   const navigate = useNavigate();
 
-  // Get only the first 3 projects (featured projects from CV)
-  const featuredProjects = projects.slice(0, 3);
+  // Featured = the first 6 (all live/prominent projects sit at the top of the list)
+  const featuredProjects = projects.slice(0, 6);
 
   return (
     <Container id="Projects">
@@ -115,8 +115,8 @@ const Projects = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           style={{ marginBottom: "40px" }}
         >
-          Here are some of my best work showcasing full-stack development,
-          mobile apps, and SaaS platforms.
+          Live production systems — SaaS platforms, corporate websites, IoT dashboards
+          and AI pipelines shipped for real merchants, schools, governments and networks.
         </Desc>
 
         <CardContainer
