@@ -15,6 +15,9 @@ import schoolbookImg from '../images/schoolbook.png'
 import seetaleagueImg from '../images/seetaleague.png'
 import airqoBeaconImg from '../images/airqo-beacon.png'
 import aibosImg from '../images/aibos.png'
+import abasajjaImg from '../images/abasajja.png'
+import shopmanagerImg from '../images/hawali.png'
+import mastersSalonImg from '../images/master.png'
 // aliases so existing experience/project entries continue to work
 const aibos = kasasaPhoto;
 const port = kasasaPhoto;
@@ -324,6 +327,98 @@ The system was built from the ground up with scalability and multi-tenancy in mi
     ],
   },
   {
+    id: 13,
+    title: "ShopManager",
+    subtitle: "Multi-Branch Retail & Repair OS",
+    date: "2025 - Present",
+    description:
+      "Production-grade multi-tenant retail OS for phone-repair and accessories shops — POS, inventory, repair pipeline and customer PWA behind one branded domain. Server-first Next.js 16 with real-time profit tracking.",
+    fullDescription: `A multi-tenant retail management system built solo, end-to-end, for phone-repair and accessories businesses in Uganda. Combines an offline-first POS, cross-branch inventory, a 3-stage repair pipeline and a public-facing storefront/PWA — all behind one branded domain.
+
+Server-first Next.js 16 with React Server Components and Server Actions everywhere. No REST or GraphQL layer — the database is queried directly from RSC and Server Actions. Multi-tenant scoping is enforced in a Prisma client extension so tenant leaks are impossible from application code. Every money-touching write is wrapped in a transaction and emits a signed audit row.`,
+    image: shopmanagerImg,
+    tags: ["Next.js 16", "React 19", "Prisma", "PostgreSQL", "TypeScript", "PWA", "Tailwind"],
+    category: "saas",
+    github: "https://github.com/kasasa22/Multi-Branch-Business-Management-Platform",
+    webapp: "",
+    liveLinks: [
+      { label: "GitHub Repo", url: "https://github.com/kasasa22/Multi-Branch-Business-Management-Platform" },
+    ],
+    features: [
+      { title: "Offline-First POS", description: "Sales queue in Dexie/IndexedDB and drain to the server every 15s with retry and backoff, so cashiers keep transacting through internet drops." },
+      { title: "Unified Repair Pipeline", description: "Service request → branch quote → customer approves → tech assigned → delivered. Marking delivered writes a Sale (labour + parts with unitCost snapshots), records a Payment, decrements stock and recomputes loyalty in one transaction." },
+      { title: "Real Profit, Not Just Revenue", description: "unitCost snapshotted per SaleLine at write-time. Owner P&L uses SUM(COALESCE(sl.unitCost, p.unitCost, 0) * quantity) so historical rows still report sensible margins." },
+      { title: "Customer PWA Storefront", description: "Public catalogue, category filters, service-request intake with client-side compressed photo upload (≤1200px JPEG), pickup-or-delivery cart, and a unified /track view for orders, repairs and services with inline chat and Approve/Reject on quotes." },
+      { title: "Three-Tier Invite Auth", description: "SSA(1000) > Owner(800) > Manager(600) > Cashier(500) > Technician(400). Every permission checks target rank < actor rank. Users are invited via signed email links — no self-signup." },
+      { title: "Signed Audit Log", description: "Every money-touching write emits an audit row with entity, action, before/after, sensitivity and actorRank." },
+    ],
+    techStack: [
+      { category: "Frontend", technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "PWA"] },
+      { category: "Backend", technologies: ["Server Actions", "NextAuth", "Nodemailer", "Prisma 6"] },
+      { category: "Database", technologies: ["PostgreSQL", "Prisma Client Extensions", "Hand-authored enum migrations"] },
+      { category: "Offline", technologies: ["Dexie", "IndexedDB", "Service Workers"] },
+      { category: "Storage", technologies: ["SeaweedFS"] },
+    ],
+    challenges: [
+      "Guaranteeing multi-tenant isolation in application code — solved with a Prisma client extension so tenant leaks are impossible by construction.",
+      "Collapsing 8 repair statuses to 4 with zero data loss — hand-authored SQL migration renaming enums and remapping every row via ALTER COLUMN ... USING (CASE ... END).",
+      "Making the customer PWA feel Stripe/Linear-level polished on a mid-range Android phone with sticky bottom-nav, tabular-nums prices, safe-area-inset padding and first-class empty/offline states.",
+      "Branch-scoped product visibility without breaking POS — OR match on addedByBranchId or inventoryItems.holdingBranchId, plus a Product.isListed toggle for the storefront.",
+    ],
+    outcomes: [
+      "~35 Prisma models across tenancy, catalogue, inventory, sales, repairs, loyalty, chat and audit — zero REST endpoints.",
+      "~40 server actions, every money-touching one wrapped in prisma.$transaction and audit-logged.",
+      "Type-safe end-to-end: Prisma → server actions → RSC, no `any`.",
+      "Real gross-profit reporting from day one — not just revenue.",
+    ],
+  },
+  {
+    id: 14,
+    title: "Masters Salon — Busiines Platform",
+    subtitle: "Salon POS + Modular Financial Ledger",
+    date: "2025 - Present",
+    description:
+      "Live salon POS running as the first business module of Busiines — a modular-monolith financial platform where independent businesses post standardised rows to a central ledger the group owner watches in real time.",
+    fullDescription: `Masters Salon is the first business module of Busiines — a modular-monolith financial platform I built end-to-end. The core rule: every child module records its operations any way it likes, but must post standardised income and expense rows to a central ledger. That lets a haircut and a rent payment aggregate into the same "Total Income vs Expenses" view for the owner.
+
+One Laravel 12 codebase, structured as app/Core (Business, Finance, RBAC) plus app/Modules (Salon first). Two independent auth realms — mother dashboard on :80, Salon UI on :8080 — share one users table, but role membership plus cookie-origin separation decide which realm a login is valid in. Full 8-service Docker Compose stack in production.`,
+    image: mastersSalonImg,
+    tags: ["Vue 3", "Laravel 12", "PostgreSQL", "Redis", "Docker", "Vuetify", "Sanctum"],
+    category: "saas",
+    github: "https://github.com/kasasa22/busiines-platform",
+    webapp: "https://masterssalon.shop/login",
+    liveLinks: [
+      { label: "Live App", url: "https://masterssalon.shop/login" },
+      { label: "GitHub Repo", url: "https://github.com/kasasa22/busiines-platform" },
+    ],
+    features: [
+      { title: "Modular-Monolith Architecture", description: "One Laravel 12 codebase: app/Core (Business, Finance, RBAC) + app/Modules (Salon first). New modules add controllers, models and migrations without touching the core." },
+      { title: "Central Financial Ledger", description: "Salon operations post standardised income/expense rows to a shared financial_transactions table via a Core/Finance service. Future modules (rentals, transport, farm) feed the same ledger automatically — no rewrites." },
+      { title: "Two Auth Realms, One Users Table", description: "Mother dashboard on :80 and Salon UI on :8080 each have their own Sanctum token, cookie origin and login endpoint. Cross-login rejected with HTTP 422. A salon_manager cannot log into the mother portal." },
+      { title: "Reactive Filter → Summary → Table Pattern", description: "Every operational page follows one shape — ref<T[]> → computed filter → computed summaries → computed paged slice. New pages are written by rote instead of reinventing state." },
+      { title: "Full Salon Back Office", description: "Dashboard with 5 KPI cards + ApexCharts trends, payments with multi-facet filters, services and departments with per-service commissions, staff vs users (Casl abilities), expenses, commissions, weekly close, per-service/staff/department/branch reports and multi-branch scoping." },
+      { title: "Rebrand-in-One-File", description: "Business name comes from VITE_BUSINESS_NAME (index.html %VAR% substitution + themeConfig.js); logo is swapped by replacing public/images/image.png. New tenant = new env value + new PNG." },
+    ],
+    techStack: [
+      { category: "Frontend", technologies: ["Vue 3", "Vite", "Vuetify", "Pinia", "Casl", "unplugin-vue-router"] },
+      { category: "Backend", technologies: ["Laravel 12", "PHP-FPM", "Sanctum", "Queue Worker", "Scheduler"] },
+      { category: "Database", technologies: ["PostgreSQL 16", "Redis 7"] },
+      { category: "DevOps", technologies: ["Docker Compose (8 services)", "Nginx", "Bind-mount HMR", "Vite polling"] },
+    ],
+    challenges: [
+      "Designing a ledger contract that stays cheap when modules are in-process and can flip to an internal API when they split out later — solved by exposing Core/Finance as a PHP service class any module injects.",
+      "Two auth realms without duplicating users — role membership + cookie-origin separation gate which frontend a login can enter, enforced at the controller.",
+      "Keeping Vuexy vendor code upgrade-safe — @core/ is treated as a vendor drop; layout tweaks go through @layouts/ forks or wrappers, never edit-in-place.",
+      "Mobile-first ops UI where tables convert to compact card lists on phones, filter bars wrap 1 → 2 → full row, and the navbar drops selectors below sm.",
+    ],
+    outcomes: [
+      "Live in production at masterssalon.shop serving a real salon business in Kampala.",
+      "20+ operational pages already shipping (payments, services, departments, staff, expenses, commissions, weekly close, products, assets, housing, mobile money, accounts, reports, settings, branches, sections, users, dashboard).",
+      "One shared Laravel API serves both realms via per-prefix route groups.",
+      "New tenant onboarding = swap two env vars and one PNG — proven whitelabel path.",
+    ],
+  },
+  {
     id: 1,
     title: "SchoolBooks",
     subtitle: "School Management Platform (Multi-Tenant)",
@@ -393,7 +488,7 @@ The system was built from the ground up with scalability and multi-tenancy in mi
     description:
       "Corporate website for Abasajja Group of Companies — multi-service business showcase with a content management backend.",
     fullDescription: `A corporate website built for Abasajja Group of Companies, presenting their subsidiaries, services and contact channels with a lightweight CMS for the team to update content without redeployment.`,
-    image: port,
+    image: abasajjaImg,
     tags: ["Vue.js", "Laravel", "Tailwind CSS"],
     category: "web app",
     github: "https://github.com/kasasa22",
