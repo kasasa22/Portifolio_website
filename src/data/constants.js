@@ -18,6 +18,7 @@ import aibosImg from '../images/aibos.png'
 import abasajjaImg from '../images/abasajja.png'
 import shopmanagerImg from '../images/hawali.png'
 import mastersSalonImg from '../images/master.png'
+import growFactoryImg from '../images/icon.png'
 // aliases so existing experience/project entries continue to work
 const aibos = kasasaPhoto;
 const port = kasasaPhoto;
@@ -155,6 +156,25 @@ export const skills = [
 ];
 
 export const experiences = [
+  {
+    id: 4,
+    img: growFactoryImg,
+    role: "AI Agent Developer – Full Stack",
+    company: "Grow Factory (via B-Smart)",
+    date: "Oct 2026 - Present",
+    desc: "AI Agent Developer (Full Stack) working on GrowOS, an agentic AI workspace that connects to the tools a business already uses — email, calendar, CRM, messaging and accounting — and runs configurable AI agents and automated workflows on top of them. Building and supporting AI agents and workflows on the GrowOS platform. Completed the GrowOS Academy onboarding programme (AI Essentials and the 7-Day Curriculum) and delivered a written review of the learning material to the team. Carried out end-to-end testing of the platform's conversational onboarding (discovery) flow and documented findings internally.",
+    skills: [
+      "AI Agents",
+      "LLMs",
+      "Agentic Workflows",
+      "Prompt Engineering",
+      "Full-Stack Development",
+      "Workflow Automation",
+      "QA & Testing",
+      "Technical Writing",
+    ],
+    doc: "",
+  },
   {
     id: 0,
     img: aibos,
