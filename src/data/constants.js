@@ -19,9 +19,8 @@ import abasajjaImg from '../images/abasajja.png'
 import shopmanagerImg from '../images/hawali.png'
 import mastersSalonImg from '../images/master.png'
 import growFactoryImg from '../images/icon.png'
-// aliases so existing experience/project entries continue to work
+// alias so existing experience entries continue to work
 const aibos = kasasaPhoto;
-const port = kasasaPhoto;
 
 export const Bio = {
   name: "Kasasa Livingstone Trevor",
